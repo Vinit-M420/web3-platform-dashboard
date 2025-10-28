@@ -56,9 +56,10 @@ export default function Sidebar({ onToggle }: SidebarProps) {
     if (!isOpen){
     return (
         <div className="fixed top-0 left-0 min-h-screen w-[80px] bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
-            border-gray-200 transition-all duration-200">
+            border-gray-200 transition-all duration-200 shadow-md">
             <div className='flex flex-col gap-4'>
-            <div className='border-b dark:border-gray-700 border-gray-200 top-0 flex items-center justify-center p-4 text-gray-500 cursor-pointer group'>      
+            <div className='border-b dark:border-gray-700 border-gray-200 top-0 flex items-center justify-center p-4 
+            dark:text-gray-300 text-gray-500 cursor-pointer group'>      
                 <Expand className='w-5 h-5' onClick={toggleSidebar} />
                 <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
                     Expand
@@ -75,15 +76,18 @@ export default function Sidebar({ onToggle }: SidebarProps) {
                 const isActive = sidebarOptionActive === index;
                 return (
                     <div key={index} className="relative group">
-                        <div className={`mx-5 flex gap-2 items-center justify-center p-2 rounded-md cursor-pointer
-                            dark:hover:bg-gray-800 hover:bg-gray-50 
-                            ${isActive ? 
-                                'dark:bg-gray-800 bg-white border dark:border-gray-700 border-gray-300 text-blue-600' : 'dark:text-gray-300 text-gray-500 border border-transparent'}`}
+                        <div className={`mx-5 flex gap-2 items-center justify-center p-2 rounded-md cursor-pointer 
+                            dark:hover:bg-gray-800 hover:bg-gray-200 border border-transparent hover:border-gray-300
+                            ${isActive 
+                                ?  'dark:bg-gray-800 bg-white dark:border-gray-700 border-black text-blue-600 shadow-xs' 
+                                :  'dark:text-gray-300 text-gray-500'}`}
                             onClick={() => setSideOption(index)}>
                             <IconComponent className={`w-5 h-5 `} />
                         </div>
                         {/* Tooltip */}
-                        <div className="absolute left-full top-1 ml-2 px-2 py-1 dark:bg-gray-800 bg-gray-100 dark:text-white text-black text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+                        <div className="absolute left-full top-1 ml-2 px-2 py-1 dark:bg-gray-800 bg-gray-100 dark:text-white 
+                        text-black text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 
+                        pointer-events-none whitespace-nowrap z-50">
                             {item.label}
                         </div>
                     </div>
@@ -91,10 +95,11 @@ export default function Sidebar({ onToggle }: SidebarProps) {
             })}
             </div>
 
-            <div className='absolute border-t border-gray-700 bottom-0 left-0 right-0 flex items-center justify-center gap-4 p-4
-            text-gray-500 hover:text-white transition-colors cursor-pointer group'>      
+            <div className='absolute border-t dark:border-gray-700 border-gray-200 bottom-0 left-0 right-0 flex items-center justify-center gap-4 p-4
+                    text-gray-300 hover:text-white transition-colors cursor-pointer group'>      
                 <Logout01Icon className='w-5 h-5' />
-                <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+                <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
                     Logout
                 </div>
             </div>
@@ -102,8 +107,8 @@ export default function Sidebar({ onToggle }: SidebarProps) {
     )}
 
     return (
-      <div className="fixed top-0 left-0 min-h-screen w-80 bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
-            border-gray-200 transition-all duration-200 text-gray-500 dark:text-gray-400">
+      <div className="fixed top-0 left-0 min-h-screen w-70 bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
+            border-gray-200 transition-all duration-200 text-gray-500 dark:text-gray-300"> 
         <div className='flex flex-col gap-4'>
             <div className='border-b dark:border-gray-700 border-gray-200 top-0 flex items-center justify-center p-4 cursor-pointer group'>      
                 <Shrink className='w-5 h-5' onClick={toggleSidebar} />
@@ -125,10 +130,11 @@ export default function Sidebar({ onToggle }: SidebarProps) {
                     <div key={index} className={`mx-5 flex gap-2 items-center justify-start p-2 rounded-md cursor-pointer
                         dark:hover:bg-gray-800 hover:bg-gray-50 
                         ${isActive ? 
-                            'dark:bg-gray-800 bg-white border dark:border-gray-700 border-gray-300 text-blue-600' : 'dark:text-gray-300 text-gray-500 border border-transparent'}`}
+                            'dark:bg-gray-800 bg-white border dark:border-gray-700 border-gray-300 text-blue-600' 
+                            : 'dark:text-gray-300 text-gray-500 border border-transparent'}`}
                         onClick={() => setSideOption(index)}>
                         <IconComponent className={`w-5 h-5`} />
-                        <p className={`transition-all duration-300 ease-in-out ${
+                        <p className={`transition-all duration-300 ease-in-out font-semibold ${
                             showLabels 
                                 ? 'opacity-100 translate-x-0' 
                                 : 'opacity-0 -translate-x-2'
@@ -138,16 +144,13 @@ export default function Sidebar({ onToggle }: SidebarProps) {
             })}
 
             <div className='absolute border-t dark:border-gray-700 border-gray-200 bottom-0 left-0 right-0 flex items-center justify-left gap-4 p-4 ml-2
-             text-gray-500 hover:text-white transition-colors cursor-pointer group'>      
+             text-gray-300 hover:text-white transition-colors cursor-pointer group'>      
                 <Logout01Icon className='w-5 h-5' />
-                <p className={`transition-all duration-300 ease-in-out ${
+                <p className={`transition-all duration-300 ease-in-out font-semibold ${
                     showLabels 
                         ? 'opacity-100 translate-x-0' 
                         : 'opacity-0 -translate-x-2'
                 }`}>Logout</p>
-                <div className="absolute left-full ml-2 px-2 py-1 dark:bg-gray-800 bg-gray-100 dark:text-white text-black text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
-                    Logout
-                </div>
             </div>
         </div>
       </div>
