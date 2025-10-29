@@ -11,7 +11,7 @@ export default function Collateral() {
     const [collateralDuration, setCollateralDuration]  = useState<collateralDurationItems>('month');
 
     return (
-    <div className="rounded-lg border dark:border-gray-800 border-gray-200 shadow-2xs p-4 flex flex-col justify-between dark:text-gray-400 text-gray-500" >
+    <div className="rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col justify-between dark:text-gray-400 text-gray-500" >
         <div className="flex justify-between">
             <div className="flex flex-col gap-2 text-white">
                 <span className='dark:text-gray-400 text-gray-500 text-md'>
@@ -28,7 +28,7 @@ export default function Collateral() {
             <div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button className="flex gap-2 rounded-lg border dark:border-gray-800 dark:bg-gray-900 
+                        <Button className="flex gap-2 rounded-lg border dark:border-gray-700 dark:bg-gray-900 
                              w-35 justify-between bg-gray-50 border-gray-300
                             hover:bg-gray-100 dark:text-gray-400 text-gray-500">
                             <p className="flex-1 truncate text-left">
@@ -77,7 +77,7 @@ export default function Collateral() {
 
         <div className="grid grid-cols-2 gap-2">
             {collateralCompositions[collateralDuration].items.map((con, index) => (  
-                <div key={index} className="rounded-lg border dark:border-gray-800 border-gray-200 shadow-2xs p-2 flex flex-col gap-2">
+                <div key={index} className="rounded-lg border dark:border-gray-700 border-gray-200 p-2 flex flex-col gap-2">
                     <span className="flex gap-2 items-center">
                         <span className={`${con.color} rounded-full w-3 h-3`} />
                         <p className="dark:text-gray-400 text-gray-500 text-sm">{con.title}</p>

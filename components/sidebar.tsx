@@ -1,7 +1,7 @@
 'use client';
 import { Shrink, Expand, Search, FileSearch   } from 'lucide-react';
 import { Logout01Icon, GridViewIcon, Note01Icon, SecurityCheckIcon,Money01Icon, Store01Icon, Analytics01Icon } from 'hugeicons-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface SidebarItem {
     icon: React.ComponentType<any>;
@@ -26,7 +26,8 @@ const sidebarItems = [
 
 
 export default function Sidebar({ onToggle }: SidebarProps) {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    const searchRef = useRef<HTMLInputElement>(null);
     const [sidebarOptionActive, setSideOption] = useState(0);
     const [showLabels, setShowLabels] = useState(true);
     
@@ -53,21 +54,30 @@ export default function Sidebar({ onToggle }: SidebarProps) {
         }
     }
 
+
     if (!isOpen){
     return (
         <div className="fixed top-0 left-0 min-h-screen w-[80px] bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
-            border-gray-200 transition-all duration-200 shadow-md">
+            border-gray-200 transition-all duration-200 shadow-md z-20">
             <div className='flex flex-col gap-4'>
             <div className='border-b dark:border-gray-700 border-gray-200 top-0 flex items-center justify-center p-4 
             dark:text-gray-300 text-gray-500 cursor-pointer group'>      
                 <Expand className='w-5 h-5' onClick={toggleSidebar} />
-                <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+                <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap 
+                    z-150">
                     Expand
                 </div>
             </div>
 
             <div className='mx-5 flex gap-2 items-center justify-center p-2 border dark:border-gray-700 border-gray-300 
-            bg-white dark:bg-black rounded-md cursor-pointer'>      
+                bg-white dark:bg-black rounded-md cursor-pointer'
+                onClick={() => {
+                    toggleSidebar();  
+                    const id = requestAnimationFrame(() => {
+                        searchRef.current?.focus();
+                    });
+                    return () => cancelAnimationFrame(id);  
+                }}>      
                 <Search className='w-5 h-5' />            
             </div>
 
@@ -89,7 +99,7 @@ export default function Sidebar({ onToggle }: SidebarProps) {
                         {/* Tooltip */}
                         <div className="absolute left-full top-1 ml-2 px-2 py-1 dark:bg-gray-800 bg-gray-100 dark:text-white 
                         text-black text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 
-                        pointer-events-none whitespace-nowrap z-50">
+                        pointer-events-none whitespace-nowrap z-150">
                             {item.label}
                         </div>
                     </div>
@@ -101,7 +111,7 @@ export default function Sidebar({ onToggle }: SidebarProps) {
                     dark:text-gray-300 text-gray-500 hover:text-gray-800 dark:hover:text-gray-50 transition-colors cursor-pointer group'>      
                 <Logout01Icon className='w-5 h-5' />
                 <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 
-                        group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+                        group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-150">
                     Logout
                 </div>
             </div>
@@ -110,11 +120,11 @@ export default function Sidebar({ onToggle }: SidebarProps) {
 
     return (
       <div className="fixed top-0 left-0 min-h-screen w-70 bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
-            border-gray-200 transition-all duration-200 text-gray-500 dark:text-gray-300"> 
+            border-gray-200 transition-all duration-200 text-gray-500 dark:text-gray-300 z-100"> 
         <div className='flex flex-col gap-4'>
             <div className='border-b dark:border-gray-700 border-gray-200 top-0 flex items-center justify-center p-4 cursor-pointer group'>      
                 <Shrink className='w-5 h-5' onClick={toggleSidebar} />
-                <div className="absolute left-full ml-2 px-2 py-1 dark:bg-gray-800 bg-gray-100 dark:text-white text-black text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+                <div className="absolute left-full ml-2 px-2 py-1 dark:bg-gray-800 bg-gray-100 dark:text-white text-black text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-150">
                     Collapse
                 </div>
             </div>
@@ -122,7 +132,7 @@ export default function Sidebar({ onToggle }: SidebarProps) {
             <div className='mx-5 flex gap-2 items-center justify-start border dark:border-gray-700 border-gray-300 
             bg-white dark:bg-black p-2 rounded-md cursor-pointer'>      
                 <Search className='w-5 h-5' />
-                <input type="text" placeholder='Search' 
+                <input ref={searchRef} type="text" placeholder='Search' 
                 className='bg-transparent outline-none text-sm dark:text-gray-200 text-gray-500 placeholder:text-gray-400' />
             </div>
 

@@ -71,7 +71,7 @@ export default function FundDistribution() {
     let currentAngle = 0;
 
     return (
-    <div className="rounded-lg border dark:border-gray-800 border-gray-200 shadow-2xs p-4 flex flex-col justify-between gap-5 w-fit" >
+    <div className="rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col justify-between gap-5 w-fit" >
         
         <div className="flex justify-between">
             <div className="flex flex-col gap-2 text-white">
@@ -90,7 +90,7 @@ export default function FundDistribution() {
             <div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                    <Button className="flex gap-2 rounded-lg border dark:border-gray-800 dark:bg-gray-900 
+                    <Button className="flex gap-2 rounded-lg border dark:border-gray-700 dark:bg-gray-900 
                              w-35 justify-between bg-gray-50 border-gray-300
                             hover:bg-gray-100 dark:text-gray-400 text-gray-500">
                             <p className="">
