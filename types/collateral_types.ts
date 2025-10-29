@@ -22,7 +22,7 @@ export const collateralCompositions = {
         duration: "month",
         items: [
             { title:"Tokenized Real Estate", color:  "bg-blue-600", percent: 60, growth: 3.4 },
-            { title:"Tokenized Real Estate", color:  "bg-blue-400", percent: 25, growth: 2.1 },
+            { title:"Crypto Collateral", color:  "bg-blue-400", percent: 25, growth: 2.1 },
             {title: "Fiat-backed Notes/Bonds",  color: "bg-sky-400", percent: 10, growth: 1.2 },
             {title: "Other RWAs",  color: "bg-sky-200", percent: 5, growth: 0.8 },
         ],
@@ -31,7 +31,7 @@ export const collateralCompositions = {
         duration: "last 3 month",
         items: [
             { title:"Tokenized Real Estate", color:  "bg-blue-600", percent: 58, growth: 5.2 },
-            { title:"Tokenized Real Estate", color:  "bg-blue-400", percent: 27, growth: 4.7 },
+            { title:"Crypto Collateral", color:  "bg-blue-400", percent: 27, growth: 4.7 },
             {title: "Fiat-backed Notes/Bonds",  color: "bg-sky-400", percent: 9, growth: 1.1 },
             {title: "Other RWAs",  color: "bg-sky-200", percent: 6, growth: 0.9 },
         ],
@@ -40,7 +40,7 @@ export const collateralCompositions = {
         duration: "last 6 month",
         items: [
             { title:"Tokenized Real Estate", color:  "bg-blue-600", percent: 52, growth: 8.9 },
-            { title:"Tokenized Real Estate", color:  "bg-blue-400", percent: 32, growth: 7.6 },
+            { title:"Crypto Collateral", color:  "bg-blue-400", percent: 32, growth: 7.6 },
             {title: "Fiat-backed Notes/Bonds",  color: "bg-sky-400", percent: 11, growth: 2.3 },
             {title: "Other RWAs",  color: "bg-sky-200", percent: 5, growth: 1.4 },
         ],

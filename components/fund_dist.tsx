@@ -61,7 +61,7 @@ export default function FundDistribution() {
     const [duration, setDuration]  = useState<DistributionDuration>('month');
     const items = DistributionData[duration];
 
-    const size = 180; // svg size
+    const size = 220; // svg size
     const cx = size / 2;
     const cy = size / 2;
     const outerR = 90;
@@ -71,15 +71,15 @@ export default function FundDistribution() {
     let currentAngle = 0;
 
     return (
-    <div className="rounded-lg border border-gray-800 p-4 flex flex-col justify-between gap-5 w-fit" >
+    <div className="rounded-lg border dark:border-gray-800 border-gray-200 shadow-2xs p-4 flex flex-col justify-between gap-5 w-fit" >
         
         <div className="flex justify-between">
             <div className="flex flex-col gap-2 text-white">
-                <span className='text-gray-400'>
+                <span className='dark:text-gray-400 text-gray-500 text-md'>
                     Total Fund Distribution
                 </span>
                 <span className="flex gap-2 items-center">
-                    <p className="font-bold text-3xl">$20,500.15</p>
+                    <p className="font-bold text-3xl dark:text-white text-black">$20,500.15</p>
                     <span className="flex gap-1 bg-green-50 text-green-500 text-sm p-1 items-center rounded-2xl">
                         <CircleArrowDown className="w-3 h-3"/>
                         <p>5.9%</p>
@@ -90,7 +90,9 @@ export default function FundDistribution() {
             <div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                    <Button className="flex gap-2 rounded-lg border border-gray-800 dark:bg-gray-900 dark:text-white text-black w-35 justify-between">
+                    <Button className="flex gap-2 rounded-lg border dark:border-gray-800 dark:bg-gray-900 
+                             w-35 justify-between bg-gray-50 border-gray-300
+                            hover:bg-gray-100 dark:text-gray-400 text-gray-500">
                             <p className="">
                                 {duration === 'year' && 'This Year'}
                                 {duration === 'month' && 'This Month'}
@@ -110,7 +112,7 @@ export default function FundDistribution() {
             </div>
         
         </div>
-        {/* <div className="flex gap-1 items-center">
+        <div className="flex gap-1 items-center justify-between">
             <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="-rotate-90">
                 {items.map((item, idx) => {
                     const sweep = (item.percent / 100) * 360 - gapDegrees;
@@ -127,16 +129,16 @@ export default function FundDistribution() {
 
             <div className="flex flex-col gap-4">
                 {items.map((item, idx) => (
-                    <div key={idx} className="flex gap-1">
-                        <span className={`w-2 h-2 rounded-full mt-1.5 ${item.color}`} />
-                        <div className="flex flex-col">
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">{item.label}</p>
-                            <p className="font-semibold text-xl">{item.percent}%</p>
+                    <div key={idx} className="flex flex-col gap-1">
+                        <div className="flex gap-1 items-center">
+                            <span className={`w-3 h-3 rounded-full ${item.color}`} />
+                            <p className="dark:text-gray-400 text-gray-500 text-sm">{item.label}</p>
                         </div>
+                        <p className="font-bold text-xl text-gray-700 dark:text-gray-100 ml-5">{item.percent}%</p>
                     </div>
                 ))}
             </div>
-        </div> */}
+        </div>
         
     </div>)
 }

@@ -11,10 +11,11 @@ interface MainProps {
 export default function Main({ isSidebarOpen }: MainProps) {
     
     return (
-        <div className={`flex-1 flex flex-col transition-all duration-200 bg-gray-50 p-4 dark:bg-black w
-                        ${isSidebarOpen ? 'ml-70' : 'ml-20'}`}>
+        <div className={`flex-1 flex flex-col transition-all duration-200 bg-gray-50 p-4 dark:bg-black shadow-md    
+                        ${isSidebarOpen ? 'ml-70' : 'ml-20'}
+                        `}>
                 <Top />
-            <div className="grid grid-cols-[1.5fr_1fr_1fr] gap-5 p-4 border border-gray-200 dark:border-gray-800 ">
+            <div className="grid grid-cols-[2fr_1fr_1fr] gap-5 p-4 border border-gray-200 dark:border-gray-800 border-t-0">
                 <Collateral />
                 <Capital />
                 <FundDistribution />

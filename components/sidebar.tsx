@@ -77,10 +77,12 @@ export default function Sidebar({ onToggle }: SidebarProps) {
                 return (
                     <div key={index} className="relative group">
                         <div className={`mx-5 flex gap-2 items-center justify-center p-2 rounded-md cursor-pointer 
-                            dark:hover:bg-gray-800 hover:bg-gray-200 border border-transparent hover:border-gray-300
+                            dark:hover:bg-gray-800 dark:hover:border-gray-700 hover:bg-gray-200 hover:border-gray-300
+                            border border-transparent 
                             ${isActive 
                                 ?  'dark:bg-gray-800 bg-white dark:border-gray-700 border-black text-blue-600 shadow-xs' 
-                                :  'dark:text-gray-300 text-gray-500'}`}
+                                :  'dark:text-gray-300 text-gray-500'}`
+                            }
                             onClick={() => setSideOption(index)}>
                             <IconComponent className={`w-5 h-5 `} />
                         </div>
@@ -96,7 +98,7 @@ export default function Sidebar({ onToggle }: SidebarProps) {
             </div>
 
             <div className='absolute border-t dark:border-gray-700 border-gray-200 bottom-0 left-0 right-0 flex items-center justify-center gap-4 p-4
-                    text-gray-300 hover:text-white transition-colors cursor-pointer group'>      
+                    dark:text-gray-300 text-gray-500 hover:text-gray-800 dark:hover:text-gray-50 transition-colors cursor-pointer group'>      
                 <Logout01Icon className='w-5 h-5' />
                 <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 
                         group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
@@ -120,7 +122,8 @@ export default function Sidebar({ onToggle }: SidebarProps) {
             <div className='mx-5 flex gap-2 items-center justify-start border dark:border-gray-700 border-gray-300 
             bg-white dark:bg-black p-2 rounded-md cursor-pointer'>      
                 <Search className='w-5 h-5' />
-                <input type="text" placeholder='Search' className='bg-transparent outline-none text-sm dark:text-gray-200 text-gray-500' />
+                <input type="text" placeholder='Search' 
+                className='bg-transparent outline-none text-sm dark:text-gray-200 text-gray-500 placeholder:text-gray-400' />
             </div>
 
             {sidebarItems.map((item, index) => {
@@ -143,8 +146,8 @@ export default function Sidebar({ onToggle }: SidebarProps) {
                 );
             })}
 
-            <div className='absolute border-t dark:border-gray-700 border-gray-200 bottom-0 left-0 right-0 flex items-center justify-left gap-4 p-4 ml-2
-             text-gray-300 hover:text-white transition-colors cursor-pointer group'>      
+            <div className='absolute border-t dark:border-gray-700 border-gray-200 bottom-0 left-0 right-0 flex items-center    
+            justify-left gap-4 p-4 ml-2 dark:text-gray-300 dark:hover:text-gray-50 transition-colors cursor-pointer group'>      
                 <Logout01Icon className='w-5 h-5' />
                 <p className={`transition-all duration-300 ease-in-out font-semibold ${
                     showLabels 
