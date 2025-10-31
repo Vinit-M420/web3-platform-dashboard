@@ -1,9 +1,23 @@
 export type AssetCategory = 'Bonds' | 'Crypto' | 'Real Estate'
 
+export const AssetColumnNames = [
+	{column: 'Asset ID'},
+	{column: 'Share-of-asset'},
+	{column: 'Valuation'},
+	{column: 'Volume'},
+	{column: 'Market Value'},
+	{column: 'Loan'},
+	{column: 'Chain'},
+	{column: 'Issuer'},
+	{column: 'Custodian'},
+	{column: 'Oracle Source'},
+	{column: 'Valuation Date'},
+]
+
 export type AssetRow = {
     asset: string,
     assetId: string,
-    shareOfAsset: string,
+    shareOfAsset: number,
     valuation: string,
     volume: string,
     marketValue: string,
@@ -20,7 +34,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Government Bond 1',
             assetId: 'BOND001',
-            shareOfAsset: '45%',
+            shareOfAsset: 45,
             valuation: '105%',
             volume: '2.5M',
             marketValue: '$125,000',
@@ -34,7 +48,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Corporate Bond 1',
             assetId: 'BOND002',
-            shareOfAsset: '38%',
+            shareOfAsset: 38,
             valuation: '98%',
             volume: '1.8M',
             marketValue: '$95,000',
@@ -48,7 +62,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Municipal Bond 1',
             assetId: 'BOND003',
-            shareOfAsset: '22%',
+            shareOfAsset: 22,
             valuation: '102%',
             volume: '900K',
             marketValue: '$75,000',
@@ -64,7 +78,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Bitcoin',
             assetId: 'BTC001',
-            shareOfAsset: '65%',
+            shareOfAsset: 65,
             valuation: '95%',
             volume: '0.5 BTC',
             marketValue: '$200,000',
@@ -78,7 +92,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Ethereum',
             assetId: 'ETH001',
-            shareOfAsset: '28%',
+            shareOfAsset: 28,
             valuation: '110%',
             volume: '12.5 ETH',
             marketValue: '$85,000',
@@ -92,7 +106,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'USDC',
             assetId: 'USDC001',
-            shareOfAsset: '15%',
+            shareOfAsset: 15,
             valuation: '100%',
             volume: '50,000 USDC',
             marketValue: '$50,000',
@@ -108,7 +122,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Real Estate 1',
             assetId: '98246278',
-            shareOfAsset: '75%',
+            shareOfAsset: 75,
             valuation: '120%',
             volume: '5%',
             marketValue: '$50,000',
@@ -122,7 +136,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Real Estate 2',
             assetId: '98246278',
-            shareOfAsset: '56%',
+            shareOfAsset: 56,
             valuation: '120%',
             volume: '1000',
             marketValue: '$50,000',
@@ -136,7 +150,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Real Estate 3',
             assetId: '98246278',
-            shareOfAsset: '43%',
+            shareOfAsset: 43,
             valuation: '120%',
             volume: '0,1',
             marketValue: '$50,000',
@@ -150,7 +164,7 @@ export const ASSET_TABLE_DATA: Record<AssetCategory, AssetRow[]> = {
         {
             asset: 'Real Estate 4',
             assetId: '98246278',
-            shareOfAsset: '20%',
+            shareOfAsset: 20,
             valuation: '120%',
             volume: '1',
             marketValue: '$50,000',

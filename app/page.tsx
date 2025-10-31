@@ -8,8 +8,8 @@ export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="flex w-screen min-h-screen bg-zinc-50 font-sans dark:bg-black">
-      <Sidebar onToggle={setIsSidebarOpen} />
+    <div className="flex min-h-screen bg-zinc-50 font-sans dark:bg-black overflow-x-hidden ">
+      {/* <Sidebar onToggle={setIsSidebarOpen} /> */}
       <Main isSidebarOpen={isSidebarOpen} />
     </div>
   );

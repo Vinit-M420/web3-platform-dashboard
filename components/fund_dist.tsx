@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button"
 import { ChevronDown, ChevronUp, CircleArrowDown  } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
+import CountUp from "./CountUp";
 
 type DistributionDuration = 'month' | 'year';
 
@@ -57,7 +58,7 @@ function describeDonutSlice(
     ].join(' ');
 }
 
-export default function FundDistribution() {
+export default function FundDistribution({ className = "" }: { className?: string }) {
     const [duration, setDuration]  = useState<DistributionDuration>('month');
     const items = DistributionData[duration];
 
@@ -71,27 +72,27 @@ export default function FundDistribution() {
     let currentAngle = 0;
 
     return (
-    <div className="rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col justify-between gap-5 w-fit" >
+    <div className={`rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col justify-between gap-5 w-full max-w-full ${className}`}>
         
-        <div className="flex justify-between">
+        <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
             <div className="flex flex-col gap-2 text-white">
                 <span className='dark:text-gray-400 text-gray-500 text-md'>
                     Total Fund Distribution
                 </span>
                 <span className="flex gap-2 items-center">
                     <p className="font-bold text-3xl dark:text-white text-black">$20,500.15</p>
-                    <span className="flex gap-1 bg-green-50 text-green-500 text-sm p-1 items-center rounded-2xl">
+                    <span className="flex gap-1 bg-green-100 text-green-600 text-sm p-1 items-center rounded-2xl hover:bg-green-200">
                         <CircleArrowDown className="w-3 h-3"/>
-                        <p>5.9%</p>
+                        <p className="lg:text-md text-xs">5.9%</p>
                     </span>
                 </span>
             </div>
             
-            <div>
+            <div className="sm:mt-0 mt-2">
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                     <Button className="flex gap-2 rounded-lg border dark:border-gray-700 dark:bg-gray-900 
-                             w-35 justify-between bg-gray-50 border-gray-300
+                             w-35 justify-between bg-gray-50 border-gray-300 cursor-pointer
                             hover:bg-gray-100 dark:text-gray-400 text-gray-500">
                             <p className="">
                                 {duration === 'year' && 'This Year'}
@@ -112,7 +113,7 @@ export default function FundDistribution() {
             </div>
         
         </div>
-        <div className="flex gap-1 items-center justify-between">
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="-rotate-90">
                 {items.map((item, idx) => {
                     const sweep = (item.percent / 100) * 360 - gapDegrees;
@@ -132,9 +133,17 @@ export default function FundDistribution() {
                     <div key={idx} className="flex flex-col gap-1">
                         <div className="flex gap-1 items-center">
                             <span className={`w-3 h-3 rounded-full ${item.color}`} />
-                            <p className="dark:text-gray-400 text-gray-500 text-sm">{item.label}</p>
+                            <p className="dark:text-gray-400 text-gray-500 text-xs">{item.label}</p>
                         </div>
-                        <p className="font-bold text-xl text-gray-700 dark:text-gray-100 ml-5">{item.percent}%</p>
+                        <p className="font-bold text-xl text-gray-700 dark:text-gray-100 ml-5">
+                            <CountUp
+                            from={0}
+                            to={item.percent}
+                            separator=","
+                            duration={0.2}
+                            className="count-up-text"
+                            />  
+                        %</p>
                     </div>
                 ))}
             </div>
