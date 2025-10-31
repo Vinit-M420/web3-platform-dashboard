@@ -57,7 +57,7 @@ export default function Sidebar({ onToggle }: SidebarProps) {
 
     if (!isOpen){
     return (
-        <div className="fixed top-0 left-0 min-h-screen w-[80px] bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
+        <div className="hidden md:block fixed top-0 left-0 min-h-screen w-[80px] bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
             border-gray-200 transition-all duration-200 shadow-md z-20">
             <div className='flex flex-col gap-4'>
             <div className='border-b dark:border-gray-700 border-gray-200 top-0 flex items-center justify-center p-4 
@@ -119,7 +119,7 @@ export default function Sidebar({ onToggle }: SidebarProps) {
     )}
 
     return (
-      <div className="fixed top-0 left-0 min-h-screen w-70 bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
+      <div className="hidden md:block fixed top-0 left-0 min-h-screen w-70 bg-gray-50 font-sans dark:bg-black border-r dark:border-gray-700
             border-gray-200 transition-all duration-200 text-gray-500 dark:text-gray-300 z-100"> 
         <div className='flex flex-col gap-4'>
             <div className='border-b dark:border-gray-700 border-gray-200 top-0 flex items-center justify-center p-4 cursor-pointer group'>      

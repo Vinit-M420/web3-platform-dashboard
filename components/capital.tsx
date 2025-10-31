@@ -12,9 +12,9 @@ export default function Capital() {
     const [capitalDuration, setcapitalDuration]  = useState<capitalDurationItems>('month');
     return (
     <div className="rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col gap-5 w-full max-w-full">
-        <div className="flex flex-col lg:flex-row justify-between gap-2 lg:gap-0">
+        <div className="flex flex-col lg:flex-row sm:justify-between     gap-2 lg:gap-0">
             <div className="flex flex-col gap-2 text-white">
-                <span className='dark:text-gray-400 text-gray-500 text-xs md:text-md'>
+                <span className='dark:text-gray-400 text-gray-500 text-xs sm:text-sm md:text-base'>
                     Capital Perfomance
                 </span>
                 <span className="flex gap-2 items-center">

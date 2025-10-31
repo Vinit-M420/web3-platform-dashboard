@@ -74,13 +74,13 @@ export default function FundDistribution({ className = "" }: { className?: strin
     return (
     <div className={`rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col justify-between gap-5 w-full max-w-full ${className}`}>
         
-        <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
-            <div className="flex flex-col gap-2 text-white">
-                <span className='dark:text-gray-400 text-gray-500 text-md'>
+        <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0">
+            <div className="flex flex-col gap-2 text-white ">
+                <span className='dark:text-gray-400 text-gray-500 text-xs sm:text-sm md:text-base'>
                     Total Fund Distribution
                 </span>
                 <span className="flex gap-2 items-center">
-                    <p className="font-bold text-3xl dark:text-white text-black">$20,500.15</p>
+                    <p className="font-bold text-xl md:text-3xl dark:text-white text-black">$20,500.15</p>
                     <span className="flex gap-1 bg-green-100 text-green-600 text-sm p-1 items-center rounded-2xl hover:bg-green-200">
                         <CircleArrowDown className="w-3 h-3"/>
                         <p className="lg:text-md text-xs">5.9%</p>

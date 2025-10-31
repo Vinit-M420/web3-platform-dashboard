@@ -12,9 +12,9 @@ export default function Collateral() {
 
     return (
     <div className="rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col justify-between dark:text-gray-400 text-gray-500 max-w-full" >
-        <div className="flex flex-col lg:flex-row justify-between gap-2 lg:gap-0 mb-5">
+        <div className="flex flex-col lg:flex-row sm:justify-between gap-2 lg:gap-0 mb-5">
             <div className="flex flex-col gap-2 text-white">
-                <span className='dark:text-gray-400 text-gray-500 text-xs md:text-md'>
+                <span className='dark:text-gray-400 text-gray-500 text-xs sm:text-sm md:text-base'>
                     Collateral Composition
                 </span>
                 <span className="flex gap-2 items-center">
@@ -76,7 +76,7 @@ export default function Collateral() {
                         style={{ width: `${item.percent}%` }}
                     >
                     <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white 
-                        lg:text-md md:text-xs text-3xs w-fit rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 
+                        lg:text-lg md:text-xs text-xs w-fit rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 
                         pointer-events-none whitespace-nowrap z-50">
                         {item.title}
                     </div>

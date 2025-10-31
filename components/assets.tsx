@@ -43,7 +43,7 @@ export default function DigitalAssets() {
                         bg-white dark:bg-black p-2 rounded-md'>      
                             <Search className='w-5 h-5' />
                             <input type="text" placeholder='Search' 
-                            className='lg:w-2xs w-[200px] bg-transparent outline-none text-sm dark:text-gray-200 text-gray-500 placeholder:text-gray-400' />
+                            className='lg:w-2xs md:w-[200px] w-[150px] bg-transparent outline-none text-sm dark:text-gray-200 text-gray-500 placeholder:text-gray-400' />
                         </div>
                         <EllipsisVertical className='w-5 h-5 cursor-pointer' />
                     </span>
@@ -106,7 +106,7 @@ export default function DigitalAssets() {
                                     return (
                                     <React.Fragment key={category}>
                                         <TableRow className="bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-900 
-                                                            hover:bg-gray-100 border-b group">
+                                                            hover:bg-gray-100 border-b group h-[60px]">
                                         <TableCell colSpan={AssetColumnNames.length + 1} className="p-0">
                                             <div className="flex items-center justify-between px-4 py-3">
                                             <div className="flex items-center gap-2">
