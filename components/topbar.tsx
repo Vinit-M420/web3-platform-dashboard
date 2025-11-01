@@ -2,6 +2,17 @@
 import { Menu, X, Search, FileSearch } from 'lucide-react';
 import { Logout01Icon, GridViewIcon, Note01Icon, SecurityCheckIcon, Money01Icon, Store01Icon, Analytics01Icon } from 'hugeicons-react';
 import { useState, useRef } from 'react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 interface TopbarProps {
   onToggle?: (isOpen: boolean) => void;
@@ -73,12 +84,29 @@ export default function MobileTopbar({ onToggle }: TopbarProps) {
               </button>
             );
           })}
+
+          <AlertDialog>
+            <AlertDialogTrigger asChild onClick={() => setIsOpen(false)}>
           <div className="border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
             <button className="w-full flex items-center gap-3 px-4 py-3 text-left text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20">
               <Logout01Icon className="w-5 h-5" />
               <span className="font-medium">Logout</span>
             </button>
           </div>
+          </AlertDialogTrigger>
+          <AlertDialogContent className='z-300'>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Do you want to logout?</AlertDialogTitle>
+            <AlertDialogDescription>
+              You will be logged out of your account.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction className='bg-red-500 text-white hover:bg-red-600'>Logout</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+        </AlertDialog>
         </div>
       </div>
 
