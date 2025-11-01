@@ -5,6 +5,7 @@ import CountUp from './CountUp'
 import { ChevronDown, CircleArrowDown  } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
 import { collateralCompositions, collateralDurationItems } from "@/types/collateral_types";
+import { motion } from "framer-motion";
 
 
 export default function Collateral() {
@@ -71,16 +72,19 @@ export default function Collateral() {
         <div className="flex flex-col gap-5">
         <div className="flex gap-2 h-3">
             {collateralCompositions[collateralDuration].items.map((item, index) => (
-                <div key={index}
+                <motion.div key={index}
+                        initial={{ width: "0%" }}
+                        animate={{ width: `${item.percent}%` }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         className={`${item.color} rounded-2xl cursor-pointer group relative`}
                         style={{ width: `${item.percent}%` }}
                     >
                     <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white 
-                        lg:text-lg md:text-xs text-xs w-fit rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 
+                        lg:text-base md:text-xs text-xs w-fit rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 
                         pointer-events-none whitespace-nowrap z-50">
                         {item.title}
                     </div>
-                </div>                           
+                </motion.div>                           
             ))}
         </div>  
 

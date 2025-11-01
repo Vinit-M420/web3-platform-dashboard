@@ -125,7 +125,7 @@ export default function FundDistribution({ className = "" }: { className?: strin
                         <path key={idx} d={d} fill={item.stroke} />
                     );
                 })}
-                <circle cx={cx} cy={cy} r={innerR - 1} fill="white" className="dark:fill-black" />
+                <circle cx={cx} cy={cy} r={innerR - 1} fill="none" className="dark:fill-none fill-none" />
             </svg>
 
             <div className="flex flex-col gap-4">
