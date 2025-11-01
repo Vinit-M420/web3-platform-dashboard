@@ -20,7 +20,6 @@ const TabTitles : TabTitleType[]  = [
     { title: "Risk & Status"},
     { title: "Management & Analytics"},
 ]
-
   
 type AssetdropdownExpandType = 'Bonds' | "Crypto" | 'Real Estate' | 'none';
     
@@ -30,7 +29,7 @@ export default function DigitalAssets() {
     const [assetCategoryOrder, SetAssetCategoryOrder] = useState(Object.keys(ASSET_TABLE_DATA));
     // const [loanCategoryOrder, SetAssetCategoryOrder] = useState(Object.keys(ASSET_TABLE_DATA));
     const [dropdownExpand, setDropDownExpand] = useState<AssetdropdownExpandType>("none");
-    const [loanDropDown, setLoanDropDown] = useState(false);
+    // const [loanDropDown, setLoanDropDown] = useState(false);
     const dragControls = useDragControls();
 
     return (
@@ -74,18 +73,6 @@ export default function DigitalAssets() {
                     </div>
                 </div>
 
-                {/* {selectedTab === 1 && 
-                <div className="dark:text-gray-400 text-gray-500 flex justify-between px-5 py-2 text-center text-sm border-b border-gray-200 dark:border-gray-700 items-center">
-                    <span>Asset</span>
-                    <div className="flex gap-10 items-center">
-                        {AssetColumnNames.map((item, index) => (
-                            <span key={index} className="w-[60px]">
-                                {item.column}</span>
-                        ))}
-                    </div>
-                </div>
-                }  */}
-
                 {selectedTab === 1 && 
                     <div className="overflow-x-auto w-full">
                         <Table className="min-w-max">
@@ -117,10 +104,12 @@ export default function DigitalAssets() {
                                                 <span
                                                 className="flex items-center gap-2 cursor-pointer font-medium"
                                                 onClick={() => {
-                                                    setDropDownExpand(prev => prev === category ? "none" : category as AssetdropdownExpandType);
+                                                    setDropDownExpand(prev => prev === category ? "none" 
+                                                        : category as AssetdropdownExpandType);
                                                 }}
                                                 >
-                                                <ChevronUp className={`w-4 h-4 transition-transform ${dropdownExpand === category ? "rotate-180" : ""}`} />
+                                                <ChevronUp className={`w-4 h-4 transition-transform 
+                                                    ${dropdownExpand === category ? "rotate-180" : ""}`} />
                                                 {category}
                                                 </span>
                                             </div>
@@ -153,15 +142,11 @@ export default function DigitalAssets() {
                                     </React.Fragment>
                                     );
                                 })}
-                                </TableBody>
+                            </TableBody>
                             </Table>
-                            </div>
-                        }   
+                        </div>
+                }   
 
-
-
-
-                
 
                 {selectedTab === 2 && 
                     <div className="overflow-x-auto w-full">
@@ -205,6 +190,7 @@ export default function DigitalAssets() {
                     No data found
                 </div>    
             }
+            
             {selectedTab === 4 && 
                 <div className="text-center py-4">
                     No data found

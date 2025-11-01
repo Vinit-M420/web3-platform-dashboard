@@ -5,11 +5,8 @@ import Collateral from "./collateral";
 import FundDistribution from "./fund_dist";
 import Top from "./top";
 
-interface MainProps {
-    isSidebarOpen: boolean;
-}
 
-export default function Main({ isSidebarOpen }: MainProps) {
+export default function Main() {
     
     return (
         <div className={`flex-1 flex flex-col transition-all duration-200 bg-gray-50 p-4 mx-auto dark:bg-black shadow-md sm:ml-20 ml-0 z-10

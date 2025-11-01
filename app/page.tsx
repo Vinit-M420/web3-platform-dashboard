@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex min-h-screen bg-zinc-50 font-sans dark:bg-black overflow-x-hidden ">
       <Sidebar onToggle={setIsSidebarOpen} />
       <Topbar />
-      <Main isSidebarOpen={isSidebarOpen} />
+      <Main />
     </div>
   );
 }

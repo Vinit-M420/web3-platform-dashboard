@@ -34,7 +34,7 @@ export default function SettingsPage() {
           <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                 <Moon className="w-5 h-5 " /> 
+                 <Moon className="w-5 h-5 hidden dark:block" /> 
                  <Sun className="w-5 h-5 dark:hidden block" /> 
                 <div>
                   <p className="font-medium">Theme</p>
