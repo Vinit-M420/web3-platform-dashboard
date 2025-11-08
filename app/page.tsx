@@ -1,8 +1,7 @@
 'use client';
-
+import { useState } from "react";
 import Sidebar from "@/components/sidebar";
 import Main from "@/components/mainbody"
-import { useState } from "react";
 import Topbar from "@/components/topbar";
 
 export default function Home() {
@@ -14,5 +13,6 @@ export default function Home() {
       <Topbar />
       <Main />
     </div>
+   
   );
 }

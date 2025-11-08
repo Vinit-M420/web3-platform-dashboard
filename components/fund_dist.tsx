@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, ChevronUp, CircleArrowDown  } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
 import CountUp from "./CountUp";
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 type DistributionDuration = 'month' | 'year';
 
@@ -21,55 +24,45 @@ const DistributionData: Record<DistributionDuration, DistributionItem[]> = {
         { label: 'Fiat Balances', percent: 21.4, color: 'bg-sky-300', stroke: '#93D2FF' },
     ],
     year: [
-        { label: 'Deployed in Loans', percent: 48.0, color: 'bg-blue-600', stroke: '#165DFF' },
+        { label: 'Deployed in Loans', percent: 54.4, color: 'bg-blue-600', stroke: '#165DFF' },
         { label: 'Stablecoins', percent: 31.0, color: 'bg-sky-500', stroke: '#29A3FF' },
-        { label: 'Fiat Balances', percent: 21.0, color: 'bg-sky-300', stroke: '#93D2FF' },
+        { label: 'Fiat Balances', percent: 15.6, color: 'bg-sky-300', stroke: '#93D2FF' },
     ],
 };
 
-function polarToCartesian(cx: number, cy: number, r: number, angleInDegrees: number) {
-    const angleInRadians = (angleInDegrees - 90) * (Math.PI / 180);
-    return {
-        x: cx + r * Math.cos(angleInRadians),
-        y: cy + r * Math.sin(angleInRadians)
-    };
-}
-
-function describeDonutSlice(
-    cx: number,
-    cy: number,
-    outerR: number,
-    innerR: number,
-    startAngle: number,
-    endAngle: number
-) {
-    const startOuter = polarToCartesian(cx, cy, outerR, endAngle);
-    const endOuter = polarToCartesian(cx, cy, outerR, startAngle);
-    const startInner = polarToCartesian(cx, cy, innerR, endAngle);
-    const endInner = polarToCartesian(cx, cy, innerR, startAngle);
-    const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
-
-    return [
-        `M ${startOuter.x} ${startOuter.y}`,
-        `A ${outerR} ${outerR} 0 ${largeArcFlag} 0 ${endOuter.x} ${endOuter.y}`,
-        `L ${endInner.x} ${endInner.y}`,
-        `A ${innerR} ${innerR} 0 ${largeArcFlag} 1 ${startInner.x} ${startInner.y}`,
-        'Z',
-    ].join(' ');
-}
 
 export default function FundDistribution({ className = "" }: { className?: string }) {
     const [duration, setDuration]  = useState<DistributionDuration>('month');
     const items = DistributionData[duration];
 
-    const size = 220; // svg size
-    const cx = size / 2;
-    const cy = size / 2;
-    const outerR = 90;
-    const innerR = 55;
-    const gapDegrees = 2; // visual gap between slices
+    const data = {
+        labels: items.map(item => item.label),
+        datasets: [
+          {
+            data: items.map(item => item.percent),
+            backgroundColor: items.map(item => item.stroke),
+            borderWidth: 0,
+            spacing: 4,
+            borderRadius: 4,
+            // rotation: -0,
+          }
+        ] 
+    };
 
-    let currentAngle = 0;
+    const options = {
+        responsive: true,
+        cutout: '60%',
+        // radius : 100,
+        plugins: {
+          legend: {
+            display : false,
+          },
+          title: {
+            display: false,
+          },
+      },
+      
+    }
 
     return (
     <div className={`rounded-lg border dark:border-gray-700 border-gray-200 p-4 flex flex-col justify-between gap-5 w-full max-w-full ${className}`}>
@@ -114,19 +107,10 @@ export default function FundDistribution({ className = "" }: { className?: strin
         
         </div>
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="-rotate-90">
-                {items.map((item, idx) => {
-                    const sweep = (item.percent / 100) * 360 - gapDegrees;
-                    const start = currentAngle + gapDegrees / 2;
-                    const end = start + Math.max(0, sweep);
-                    currentAngle += (item.percent / 100) * 360;
-                    const d = describeDonutSlice(cx, cy, outerR, innerR, start, end);
-                    return (
-                        <path key={idx} d={d} fill={item.stroke} />
-                    );
-                })}
-                <circle cx={cx} cy={cy} r={innerR - 1} fill="none" className="dark:fill-none fill-none" />
-            </svg>
+            
+            <div className="w-[220px] h-[220px]">
+                <Doughnut data={data} options={options} />
+            </div>
 
             <div className="flex flex-col gap-4">
                 {items.map((item, idx) => (

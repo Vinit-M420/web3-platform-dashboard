@@ -92,33 +92,32 @@ export default function DigitalAssets() {
                                     const assets = ASSET_TABLE_DATA[category as keyof typeof ASSET_TABLE_DATA];
                                     return (
                                     <React.Fragment key={category}>
-                                        <TableRow className="bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-900 
-                                                            hover:bg-gray-100 border-b group h-[60px]">
-                                        <TableCell colSpan={AssetColumnNames.length + 1} className="p-0">
-                                            <div className="flex items-center justify-between px-4 py-3">
-                                            <div className="flex items-center gap-2">
-                                                <GripVertical
-                                                className="w-4 h-4 cursor-grab opacity-0 group-hover:opacity-100 transition-opacity"
-                                                onPointerDown={(e) => dragControls.start(e)}
-                                                />
-                                                <span
-                                                className="flex items-center gap-2 cursor-pointer font-medium"
-                                                onClick={() => {
-                                                    setDropDownExpand(prev => prev === category ? "none" 
-                                                        : category as AssetdropdownExpandType);
-                                                }}
-                                                >
-                                                <ChevronUp className={`w-4 h-4 transition-transform 
-                                                    ${dropdownExpand === category ? "rotate-180" : ""}`} />
-                                                {category}
-                                                </span>
-                                            </div>
-                                            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <Checkbox className="border border-gray-500" />
-                                                <EllipsisVertical className="w-4 h-4" />
-                                            </div>
-                                            </div>
-                                        </TableCell>
+                                        <TableRow className="bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-900 hover:bg-gray-100 group h-[60px]">
+                                            <TableCell colSpan={AssetColumnNames.length + 1} className="p-0">
+                                                <div className="flex items-center justify-between px-4 py-3 ">
+                                                    <div className="flex items-center gap-2">
+                                                        <GripVertical
+                                                        className="w-4 h-4 cursor-grab opacity-0 group-hover:opacity-100 transition-opacity"
+                                                        onPointerDown={(e) => dragControls.start(e)}
+                                                        />
+                                                        <span
+                                                        className="flex items-center gap-2 cursor-pointer font-medium"
+                                                        onClick={() => {
+                                                            setDropDownExpand(prev => prev === category ? "none" 
+                                                                : category as AssetdropdownExpandType);
+                                                        }}
+                                                        >
+                                                        <ChevronUp className={`w-4 h-4 transition-transform 
+                                                            ${dropdownExpand === category ? "rotate-180" : ""}`} />
+                                                        {category}
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <Checkbox className="border border-gray-500" />
+                                                        <EllipsisVertical className="w-4 h-4" />
+                                                    </div>
+                                                </div>
+                                            </TableCell>
                                         </TableRow>
 
                                         <AnimatePresence>
